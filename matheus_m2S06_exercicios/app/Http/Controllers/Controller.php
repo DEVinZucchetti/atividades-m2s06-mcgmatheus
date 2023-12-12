@@ -9,4 +9,13 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
+
+    public function response( $message, $data, $status = true, $statusCode = 200){
+        $response = [
+            'data' => $data,
+            'message' => $message,
+            'success' => $status,
+        ];
+        return response ($response, $statusCode);
+    }
 }

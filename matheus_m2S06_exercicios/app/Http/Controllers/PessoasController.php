@@ -16,4 +16,18 @@ class PessoasController extends Controller
             return $this->response($exception->getMessage(),null, false, 500);
         }
     }
+
+    public function store(Request $request){
+       //recebe dados da requisição
+       try{
+        $request->validate([
+            'name' => 'required | min: 3 | max: 150',
+            'cpf' => 'min: 11 | max: 20',
+            'contact' => 'max: 20',
+        ]);
+        $pessoa = Pessoa::create($request->all());
+       } catch(\Exception $exception){
+            return $this->response($exception->getMessage(),null, false, 500);
+        }
+    }
 }

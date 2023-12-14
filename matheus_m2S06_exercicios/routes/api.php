@@ -20,4 +20,5 @@ Route::prefix('pessoas')->group(function(){
     Route::post('', [PessoasController::class, 'store']);
     Route::put('{id}', [PessoasController::class, 'update']);
     Route::delete('{id}', [PessoasController::class, 'destroy']);
+    Route::get('{id}', [PessoasController::class, 'show']);
 });
